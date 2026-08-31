@@ -12,8 +12,8 @@
 
 SECONDS=0 # builtin bash timer
 LOCAL_DIR="$(pwd)/.."
-ZIPNAME="Kinesis-AOSP-Ginkgo-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
-ZIPNAME_KSU="Kinesis-AOSP-Ginkgo-KSUNext-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
+ZIPNAME="AK_sata-AOSP-Ginkgo-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
+ZIPNAME_KSU="AK_sata-AOSP-Ginkgo-KSUNext-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
 TC_DIR="${LOCAL_DIR}/toolchain"
 CLANG_DIR="${TC_DIR}/clang"
 GCC_64_DIR="${TC_DIR}/aarch64-linux-android-4.9"
@@ -21,8 +21,8 @@ GCC_32_DIR="${TC_DIR}/arm-linux-androideabi-4.9"
 AK3_DIR="${LOCAL_DIR}/AnyKernel3"
 DEFCONFIG="vendor/ginkgo-perf_defconfig"
 
-export KBUILD_BUILD_USER="Frenzy"
-export KBUILD_BUILD_HOST="KinesisPrjkt"
+export KBUILD_BUILD_USER="t.me"
+export KBUILD_BUILD_HOST="frenzynpc"
 export PATH="$CLANG_DIR/bin:$GCC_64_DIR/bin:$GCC_32_DIR/bin:$PATH"
 export LD_LIBRARY_PATH="$CLANG_DIR/lib:$LD_LIBRARY_PATH"
 
@@ -55,7 +55,7 @@ echo -e "\nCleanup KernelSU first on local build\n"
 rm -rf KernelSU-Next drivers/kernelsu
 
 echo -e "\nKSU Support, let's Make it On\n"
-curl -kLSs "https://raw.githubusercontent.com/frenzynpc/KernelSU-Next/legacy-susfs/kernel/setup.sh" | bash -s legacy-susfs
+curl -kLSs "https://raw.githubusercontent.com/frenzynpc/KernelSU-Next/legacy-susfs/kernel/setup.sh" | bash -s legacy-susfs-v2
 
 sed -i 's/CONFIG_KSU=n/CONFIG_KSU=y/g' arch/arm64/configs/$DEFCONFIG
 sed -i 's/CONFIG_KSU_MANUAL_HOOK=n/CONFIG_KSU_MANUAL_HOOK=y/g' arch/arm64/configs/$DEFCONFIG
